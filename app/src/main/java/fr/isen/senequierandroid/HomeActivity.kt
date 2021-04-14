@@ -32,7 +32,11 @@ class HomeActivity : AppCompatActivity() {
             StartCategoryActivity(Type.DESSERTS)
         }
 
+        binding.Ble.setOnClickListener{
 
+            val i: Intent = Intent(this, BLEScanActivity::class.java)
+            startActivity(i)
+        }
 
         /*val entree = findViewById<Button>(R.id.entree)
         val entree = findViewById<Button>(R.id.entree)*/

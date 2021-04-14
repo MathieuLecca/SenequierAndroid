@@ -14,13 +14,14 @@
         android:layout_marginTop="250dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
+        android:backgroundTint="#ED0D0D"
         android:text="@string/entree"
         app:layout_constraintBottom_toTopOf="@+id/plat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.832"
-        app:strokeColor="#8BC34A" />
+        android:strokeColor="#8BC34A" />
 
     <Button
         android:id="@+id/dessert"
@@ -30,6 +31,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="114dp"
+        android:backgroundTint="#ED0D0D"
         android:text="@string/dessert"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,6 +46,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
+        android:backgroundTint="#ED0D0D"
         android:text="@string/plat"
         app:layout_constraintBottom_toTopOf="@+id/dessert"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,12 +57,36 @@
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="@string/home_title"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Ble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#ED0D0D"
+        android:text="BLE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="488dp"
+        android:layout_height="143dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.634"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/le_senequier_saint_tropez" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

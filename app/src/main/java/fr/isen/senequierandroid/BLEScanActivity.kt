@@ -15,6 +15,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
 import fr.isen.senequierandroid.databinding.ActivityBLEScanBinding
 import android.Manifest
+import android.util.Log
 
 class BLEScanActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBLEScanBinding
@@ -31,6 +32,7 @@ class BLEScanActivity : AppCompatActivity() {
 
 
         binding.PlayPauseView.setOnClickListener {
+            Log.d("BLE : /","play/pause")
             togglePlaypauseAction()
         }
         binding.BLEScanTitle.setOnClickListener {

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background"
     tools:context=".BLEScanActivity">
 
     <TextView
@@ -13,6 +14,7 @@
         android:layout_marginTop="32dp"
         android:textColor="@color/teal_700"
         android:textSize="18sp"
+        android:text="Hello"
         app:layout_constraintEnd_toStartOf="@+id/PlayPauseView"
         app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +29,7 @@
         android:tint="@color/teal_200"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_play" />
+        app:srcCompat="@android:drawable/ic_media_play" />
 
     <ProgressBar
         android:indeterminate="true"
