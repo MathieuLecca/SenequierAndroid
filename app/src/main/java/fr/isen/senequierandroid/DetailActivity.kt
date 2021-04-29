@@ -1,13 +1,11 @@
-package fr.isen.senequierandroid
+ package fr.isen.senequierandroid
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
-import com.synnapps.carouselview.CarouselView
 import com.synnapps.carouselview.ImageListener
-import fr.isen.senequierandroid.databinding.ActivityCategoryBinding
 import fr.isen.senequierandroid.databinding.ActivityDetailBinding
 import fr.isen.senequierandroid.model.Dish
 
@@ -21,6 +19,8 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        var quantity: Int = 0
+
         dish = (intent.getSerializableExtra("dish") as? Dish)!!
 
         if (dish != null) {
@@ -28,9 +28,27 @@ class DetailActivity : AppCompatActivity() {
             binding.ingredientsTextView.text = dish.getIngredients()
             binding.carousel.pageCount = dish.images.size
             binding.carousel.setImageListener(imageListener)
-        }
-        if (dish != null) {
             Toast.makeText(this, dish.title ?: "detail", Toast.LENGTH_LONG).show()
+            calculTotal(quantity, dish)
+        }
+
+        // Bouton + plus
+        binding.plus.setOnClickListener {
+            quantity++
+            binding.count.text = quantity.toString()
+            if (dish != null) {
+                calculTotal(quantity, dish)
+            }
+        }
+
+        // Bouton - moins
+        binding.moins.setOnClickListener {
+            if (quantity > 0)
+                quantity--
+            binding.count.text = quantity.toString()
+            if (dish != null) {
+                calculTotal(quantity, dish)
+            }
         }
     }
 
@@ -43,4 +61,16 @@ class DetailActivity : AppCompatActivity() {
             }
         }
     }
+
+
+   private fun calculTotal(quantity: Int, itemPricedata: Dish) {
+        val total = quantity * itemPricedata.prices[0].price.toInt()
+        "Total : $total €".also {
+            binding.incrementPrice.text = it
+        }
+    }
+
+
 }
+
+

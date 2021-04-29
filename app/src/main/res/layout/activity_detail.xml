@@ -49,5 +49,57 @@
         app:strokeColor="#FF777777"
         app:strokeWidth="1dp" />
 
+    <ImageView
+        android:id="@+id/plus"
+        android:layout_width="38dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="64dp"
+        app:layout_constraintBottom_toTopOf="@+id/ingredientsTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.644"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemTitle"
+        app:layout_constraintVertical_bias="0.491"
+        app:srcCompat="@drawable/plus" />
 
+    <ImageView
+        android:id="@+id/moins"
+        android:layout_width="40dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="152dp"
+        app:layout_constraintBottom_toTopOf="@+id/ingredientsTextView"
+        app:layout_constraintEnd_toStartOf="@+id/plus"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemTitle"
+        app:layout_constraintVertical_bias="0.482"
+        app:srcCompat="@drawable/minus_sign" />
+
+    <TextView
+        android:id="@+id/count"
+        android:layout_width="30dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="16dp"
+        android:text="0"
+        app:layout_constraintEnd_toStartOf="@+id/plus"
+        app:layout_constraintStart_toEndOf="@+id/moins"
+        app:layout_constraintTop_toBottomOf="@+id/itemTitle" />
+
+
+
+    <TextView
+        android:id="@+id/incrementPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.835" />
 </androidx.constraintlayout.widget.ConstraintLayout>

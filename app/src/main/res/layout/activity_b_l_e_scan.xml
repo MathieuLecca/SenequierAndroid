@@ -4,60 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_dark_background"
+    android:background="@color/black"
     tools:context=".BLEScanActivity">
 
     <TextView
         android:id="@+id/BLEScanTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="BLE DEVICES"
         android:textColor="@color/teal_700"
         android:textSize="18sp"
-        android:text="Hello"
         app:layout_constraintEnd_toStartOf="@+id/PlayPauseView"
-        app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/PlayPauseView"
-        android:layout_width="40dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_width="58dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="12dp"
         android:tint="@color/teal_200"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.895"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_media_play" />
 
     <ProgressBar
-        android:indeterminate="true"
-        android:visibility="gone"
-        android:id="@+id/progressBar"
+        android:id="@+id/loadingProgress"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
+        android:indeterminate="true"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BLEScanTitle" />
+
     <View
+        android:id="@+id/titleDividerNoCustom"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:id="@+id/titleDividerNoCustom"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="92dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/BLEScanTitle"
-        />
+        app:layout_constraintTop_toBottomOf="@id/BLEScanTitle" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/BLE_recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleDividerNoCustom"/>
+        app:layout_constraintTop_toBottomOf="@id/titleDividerNoCustom" />
 </androidx.constraintlayout.widget.ConstraintLayout>
