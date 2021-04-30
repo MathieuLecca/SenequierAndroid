@@ -3,7 +3,6 @@ package fr.isen.senequierandroid
 import android.bluetooth.le.ScanResult
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +16,8 @@ class DeviceAdapter(private val listdevice: MutableList<ScanResult>) :
         parent: ViewGroup,
         viewType: Int
     ): DeviceViewHolder {
-        val binding = CellDeviceBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = CellDeviceBinding.inflate(layoutInflater)
         return DeviceViewHolder(binding)
     }
 
@@ -27,7 +27,7 @@ class DeviceAdapter(private val listdevice: MutableList<ScanResult>) :
     }
 
     fun addDevice(appareilData: ScanResult) {
-        Log.d("BLEAdapter", "ajout de couille")
+        Log.d("BLEAdapter", "ajout de  : ${appareilData.device.address}")
         if (!listdevice.contains(appareilData))
             listdevice.add(appareilData)
     }
@@ -35,8 +35,7 @@ class DeviceAdapter(private val listdevice: MutableList<ScanResult>) :
     override fun getItemCount(): Int = listdevice.size
 
     class DeviceViewHolder(binding: CellDeviceBinding) : RecyclerView.ViewHolder(binding.root) {
-        val titledevice: TextView = itemView.findViewById(R.id.devicetitle)
-        val deviceAddress: TextView = itemView.findViewById(R.id.adresseDevice)
-        val layout = itemView.findViewById<View>(R.id.cellDevice)
+        val titledevice: TextView = binding.devicetitle
+        val deviceAddress: TextView = binding.adresseDevice
     }
 }

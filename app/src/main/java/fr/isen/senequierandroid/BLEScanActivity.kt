@@ -32,7 +32,6 @@ class BLEScanActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBLEScanBinding
     private var isScanning = false
     private var bluetoothAdapter: BluetoothAdapter? = null
-    private var bluetoothLeScanner: BluetoothLeScanner? = null
     private var leDeviceListAdapter: DeviceAdapter? = null
     private val handler = Handler()
 
@@ -47,14 +46,11 @@ class BLEScanActivity : AppCompatActivity() {
         setContentView(binding.root)
         bluetoothAdapter = getSystemService(BluetoothManager::class.java)?.adapter
         initRecyclerDevice()
-        bluetoothLeScanner = bluetoothAdapter?.bluetoothLeScanner
         startBLEifPossible()
-        isDeviceHasBLESupport()
 
         binding.PlayPauseView.setOnClickListener {
-            bluetoothLeScanner?.startScan(null, scanSettings, leScanCallback)
+            //bluetoothAdapter?.bluetoothLeScanner?.startScan(null, scanSettings, leScanCallback)
             togglePlayPauseAction()
-            isDeviceHasBLESupport()
         }
 
         binding.BLEScanTitle.setOnClickListener {
@@ -113,8 +109,8 @@ class BLEScanActivity : AppCompatActivity() {
     // Stops scanning after 10 seconds.
     private val SCAN_PERIOD: Long = 10000
     private fun scanLeDevice() {
-        bluetoothLeScanner?.let { scanner ->
-            if (!isScanning) { // Stops scanning after a pre-defined scan period.
+        bluetoothAdapter?.bluetoothLeScanner?.let { scanner ->
+            if (isScanning) { // Stops scanning after a pre-defined scan period.
                 handler.postDelayed({
                     isScanning = false
                     scanner.stopScan(leScanCallback)
@@ -133,16 +129,16 @@ class BLEScanActivity : AppCompatActivity() {
         override fun onScanResult(callbackType: Int, result: ScanResult) {
             super.onScanResult(callbackType, result)
             Log.d("BLEScan", "CC LE SCAN")
-            runOnUiThread {
-                leDeviceListAdapter?.addDevice(result)
-                leDeviceListAdapter?.notifyDataSetChanged()
-            }
+            leDeviceListAdapter?.addDevice(result)
+            leDeviceListAdapter?.notifyDataSetChanged()
+
         }
     }
 
     private fun togglePlayPauseAction() {
         isScanning = !isScanning
         if (isScanning) {
+            Log.d("ScanDevices", "onRequestPermON")
             binding.BLEScanTitle.text = getString(R.string.ble_scan_pause_title)
             binding.loadingProgress.isVisible = true
             binding.titleDividerNoCustom.isVisible = false
