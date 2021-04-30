@@ -1,7 +1,7 @@
 package fr.isen.senequierandroid.model
 
 import com.google.gson.annotations.SerializedName
-import fr.isen.eugene.foodofeugene.Model.Ingredients
+import fr.isen.senequierandroid.model.Ingredients
 import java.io.Serializable
 
 data class Dish(
