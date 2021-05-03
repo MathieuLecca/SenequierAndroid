@@ -93,7 +93,11 @@ class BLEScanActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerDevice() {
-        leDeviceListAdapter = DeviceAdapter(mutableListOf())
+        leDeviceListAdapter = DeviceAdapter(mutableListOf()){
+            val intent = Intent(this, BLESingleDeviceActivity::class.java)
+            intent.putExtra("device", it )
+            startActivity(intent)
+        }
         binding.BLERecyclerView.layoutManager = LinearLayoutManager(this)
         binding.BLERecyclerView.adapter = leDeviceListAdapter
     }

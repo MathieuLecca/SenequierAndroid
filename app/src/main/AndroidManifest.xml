@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SenequierAndroid">
-        <activity android:name=".BLEScanDetailActivity"></activity>
+        <activity android:name=".BLESingleDeviceActivity" />
+        <activity android:name=".BLEScanDetailActivity" />
         <activity android:name=".BLEScanActivity" />
         <activity android:name=".DetailActivity" />
         <activity android:name=".CategoryActivity" />

@@ -1,5 +1,6 @@
 package fr.isen.senequierandroid
 
+import android.bluetooth.BluetoothDevice
 import android.bluetooth.le.ScanResult
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import fr.isen.senequierandroid.databinding.CellDeviceBinding
 
 
-class DeviceAdapter(private val listdevice: MutableList<ScanResult>) :
+class DeviceAdapter(private val listdevice: MutableList<ScanResult>, val deviceClickCall : (BluetoothDevice)-> Unit) :
     RecyclerView.Adapter<DeviceAdapter.DeviceViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -24,6 +25,10 @@ class DeviceAdapter(private val listdevice: MutableList<ScanResult>) :
     override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
         holder.deviceAddress.text = listdevice[position].device.address
         holder.titledevice.text = listdevice[position].device.name
+        holder.layout.setOnClickListener{
+            deviceClickCall (listdevice[position].device)
+        }
+
     }
 
     fun addDevice(appareilData: ScanResult) {
@@ -37,5 +42,7 @@ class DeviceAdapter(private val listdevice: MutableList<ScanResult>) :
     class DeviceViewHolder(binding: CellDeviceBinding) : RecyclerView.ViewHolder(binding.root) {
         val titledevice: TextView = binding.devicetitle
         val deviceAddress: TextView = binding.adresseDevice
+        val layout = binding.cellDevice
+
     }
 }
