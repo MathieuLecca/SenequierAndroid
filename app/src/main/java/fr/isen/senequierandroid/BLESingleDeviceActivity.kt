@@ -43,6 +43,9 @@ class BLESingleDeviceActivity : AppCompatActivity() {
 
             override fun onServicesDiscovered(gatt: BluetoothGatt?, status: Int) {
                 super.onServicesDiscovered(gatt, status)
+                gatt?.services?.let{
+                    // mettre à jour l'expandable recycler view
+                }
             }
 
 
@@ -62,6 +65,9 @@ class BLESingleDeviceActivity : AppCompatActivity() {
             runOnUiThread {
                 binding.deviceStatus.text =
                     getString(R.string.ble_device_status, getString(it.text))
+            }
+            if (it.state == BLEConnexionState.STATE_CONNECTED.state){
+                gatt?.discoverServices()
             }
         }
     }
