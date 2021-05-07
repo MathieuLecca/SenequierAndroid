@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import fr.isen.senequierandroid.databinding.CellDeviceBinding
+import org.w3c.dom.Text
 
 
 class DeviceAdapter(private val listdevice: MutableList<ScanResult>, val deviceClickCall : (BluetoothDevice)-> Unit) :
@@ -28,21 +29,25 @@ class DeviceAdapter(private val listdevice: MutableList<ScanResult>, val deviceC
         holder.layout.setOnClickListener{
             deviceClickCall (listdevice[position].device)
         }
-
+        holder.rssi.text = listdevice[position].rssi.toString()
     }
 
     fun addDevice(appareilData: ScanResult) {
         Log.d("BLEAdapter", "ajout de  : ${appareilData.device.address}")
-        if (!listdevice.contains(appareilData))
+        val index = listdevice.indexOfFirst { it.device.address == appareilData.device.address }
+        if (index != -1) {
+            listdevice[index] = appareilData
+        } else {
             listdevice.add(appareilData)
+        }
     }
 
     override fun getItemCount(): Int = listdevice.size
 
     class DeviceViewHolder(binding: CellDeviceBinding) : RecyclerView.ViewHolder(binding.root) {
-        val titledevice: TextView = binding.devicetitle
-        val deviceAddress: TextView = binding.adresseDevice
+        val titledevice: TextView = binding.tvTitleValue
+        val deviceAddress: TextView = binding.tvAddressValue
         val layout = binding.cellDevice
-
+        val rssi: TextView = binding.tvRssiValue
     }
 }

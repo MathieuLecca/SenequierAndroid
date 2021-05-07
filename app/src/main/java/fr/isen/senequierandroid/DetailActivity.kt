@@ -24,6 +24,7 @@ class DetailActivity : AppCompatActivity() {
         dish = (intent.getSerializableExtra("dish") as? Dish)!!
 
         if (dish != null) {
+
             binding.itemTitle.text = dish.title
             binding.ingredientsTextView.text = dish.getIngredients()
             binding.carousel.pageCount = dish.images.size
@@ -55,7 +56,7 @@ class DetailActivity : AppCompatActivity() {
     val imageListener: ImageListener = object : ImageListener {
         override fun setImageForPosition(position: Int, imageView: ImageView?) {
             if (dish == null) {
-                Picasso.get().load("http://www.estdebol.ru/images/no_photo.png").into(imageView)
+                Picasso.get().load("https://www.google.com/search?q=carpaccio+de+saumon&client=firefox-b-d&sxsrf=ALeKk03fIsVEYRqbKKtdadI3BjHE8VL_HQ:1620414704798&tbm=isch&source=iu&ictx=1&fir=40nrQdWr5Q05rM%252Cv1_U2jy3FxpBKM%252C%252Fg%252F1q6g8_svr&vet=1&usg=AI4_-kQmhbrUsVH2YzAlmRBiyGXSj0PAJA&sa=X&ved=2ahUKEwjh1PiWo7jwAhXxDWMBHRt3DmAQ_B16BAgeEAE#imgrc=b7WWjPRV0V7dMM").into(imageView)
             } else {
                 Picasso.get().load(dish.images.get(position)).into(imageView)
             }

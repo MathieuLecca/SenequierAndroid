@@ -1,32 +1,26 @@
 package fr.isen.senequierandroid
 
 
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.widget.Toast
 import android.Manifest
-import android.app.Activity
-import android.bluetooth.*
-import android.bluetooth.le.BluetoothLeScanner
+import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothManager
 import android.bluetooth.le.ScanCallback
 import android.bluetooth.le.ScanResult
 import android.bluetooth.le.ScanSettings
-import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
+import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import fr.isen.senequierandroid.databinding.ActivityBLEScanBinding
-import fr.isen.senequierandroid.databinding.ActivityHomeBinding
-import java.util.*
-import kotlin.collections.ArrayList
 
 class BLEScanActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBLEScanBinding
@@ -94,6 +88,7 @@ class BLEScanActivity : AppCompatActivity() {
 
     private fun initRecyclerDevice() {
         leDeviceListAdapter = DeviceAdapter(mutableListOf()){
+            bluetoothAdapter?.bluetoothLeScanner?.stopScan(leScanCallback)
             val intent = Intent(this, BLESingleDeviceActivity::class.java)
             intent.putExtra("device", it )
             startActivity(intent)

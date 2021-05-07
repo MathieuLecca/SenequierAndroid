@@ -32,9 +32,7 @@ class CategoryAdapter(private val categories: List<Dish>, private val clickListe
             clickListener.onItemClicked(categories[position])
         }
         if (categories[position].getFirstPicture().isNullOrEmpty()){
-            Picasso.get()
-                .load("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.commentcamarche.net%2Fapplis-sites%2Fservices-en-ligne%2F729-faire-une-recherche-a-partir-d-une-image-sur-google%2F&psig=AOvVaw0lQTqL8i4mwkPL5ie4sDRL&ust=1617218775377000&source=images&cd=vfe&ved=2ahUKEwjFjqjG39jvAhURxuAKHaDPCUUQjRx6BAgAEAc")
-                .into (holder.image)
+            holder.image.setImageResource(R.drawable.carpaccio_de_saumon)
         }
         else {
             Picasso.get().load(categories[position].getFirstPicture())

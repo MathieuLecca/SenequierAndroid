@@ -8,10 +8,10 @@
     <string name="textview2">TextView2</string>
     <string name="ble_scan_pause_title" />
     <string name="ble_scan_play_title" />
-    <string name="ble_device_status_connecting" />
-    <string name="ble_device_status_connected" />
-    <string name="ble_device_status_disconnecting" />
-    <string name="ble_device_status_disconnected" />
+    <string name="ble_device_status_connecting">CONNECTING</string>
+    <string name="ble_device_status_connected" >CONNECTED</string>
+    <string name="ble_device_status_disconnecting">DISCONNECTING</string>
+    <string name="ble_device_status_disconnected">DISCONNECTED</string>
     <string name="ble_device_status">status: %1$s</string>
 
 
